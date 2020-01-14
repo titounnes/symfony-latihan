@@ -1,3 +1,9 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+profile:
+    path: /profile
+    controller: App\Controller\ProfileController::show
+profile_form:
+    path: /profile/form
+    controller: App\Controller\ProfileController::form

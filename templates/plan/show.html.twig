@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plan{% endblock %}
+
+{% block body %}
+    <h1>Plan</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ plan.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ plan.code }}</td>
+            </tr>
+            <tr>
+                <th>Competence</th>
+                <td>{{ plan.competence }}</td>
+            </tr>
+            <tr>
+                <th>Indicator</th>
+                <td>{{ plan.indicator }}</td>
+            </tr>
+            <tr>
+                <th>Activity</th>
+                <td>{{ plan.activity }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ plan.createdAt ? plan.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ plan.updatedAt ? plan.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deleted_at</th>
+                <td>{{ plan.deletedAt ? plan.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_by</th>
+                <td>{{ plan.createdBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('plan_index') }}">back to list</a>
+
+    <a href="{{ path('plan_edit', {'id': plan.id}) }}">edit</a>
+
+    {{ include('plan/_delete_form.html.twig') }}
+{% endblock %}

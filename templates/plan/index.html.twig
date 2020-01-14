@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plan index{% endblock %}
+
+{% block body %}
+    <h1>Plan index</h1>
+
+    <div class="table-responsive">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Code</th>
+                    <th>Competence</th>
+                    <th>Indicator</th>
+                    <th>Activity</th>
+                    <th>Created_at</th>
+                    <th>Updated_at</th>
+                    <th>Created_by</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i, plan in plans %}
+                <tr>
+                    <td>{{ i+1 }}</td>
+                    <td>{{ plan.code }}</td>
+                    <td>{{ plan.competence }}</td>
+                    <td>{{ plan.indicator }}</td>
+                    <td>{{ plan.activity }}</td>
+                    <td>{{ plan.createdAt ? plan.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ plan.updatedAt ? plan.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ plan.createdBy }}</td>
+                    <td>
+                        <a href="{{ path('plan_show', {'id': plan.id}) }}">show</a>
+                        <a href="{{ path('plan_edit', {'id': plan.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('plan_new') }}">Create new</a>
+{% endblock %}

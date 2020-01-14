@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1>Profile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email}}</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>{{ profile ? profile.firstName : '-' }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ profile ? profile.lastName : '-' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path( profile ? 'profile_edit' : 'profile_new', {'id': profile ? profile.id : '' }) }}">{{ profile ? 'Edit' : 'New' }}</a>
+
+{% endblock %}

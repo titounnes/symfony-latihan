@@ -3,7 +3,30 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+imports:
+    # - { resource: 'legacy_config.php' }
+    # ignore_errors silently discards errors if the loaded file doesn't exist
+    # - { resource: 'my_config_file.xml', ignore_errors: true }
+    # glob expressions are also supported to load multiple files
+    # - { resource: '/etc/myapp/*.yaml' }
+
 parameters:
+    # the parameter name is an arbitrary string (the 'app.' prefix is recommended
+    # to better differentiate your parameters from Symfony parameters).
+    app.admin_email: 'admin.rpp@e-project-tech.com'
+
+    # boolean parameters
+    app.enable_v2_protocol: true
+
+    # array/collection parameters
+    app.supported_locales: ['id', 'en']
+
+    # binary content parameters (encode the contents with base64_encode())
+    # app.some_parameter: !!binary VGhpcyBpcyBhIEJlbGwgY2hhciAH
+
+    # PHP constants as parameter values
+    # app.some_constant: !php/const GLOBAL_CONSTANT
+    # app.another_constant: !php/const App\Entity\BlogPost::MAX_ITEMS
 
 services:
     # default configuration for services in *this* file

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><img src="/assets/img/e-project.ico" height="40px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/#">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                {{ include('partial/navigation/admin.html.twig') }}                
+            {% elseif is_granted('ROLE_TEACHER') %}
+                {{ include('partial/navigation/teacher.html.twig') }}                
+            {% else %}
+                {{ include('partial/navigation/guest.html.twig') }}
+            {% endif %}
+
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout#">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login#">Login</a>
+                </li>
+            {% endif %}            
+        </ul>
+    </div>
+</nav>
