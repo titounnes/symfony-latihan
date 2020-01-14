@@ -23,9 +23,8 @@ class PlanController extends AbstractController
     public function index(PlanRepository $planRepository): Response
     {
         $user = $this->getUser();
-        $plan = $planRepository->contains($user->getId());
         return $this->render('plan/index.html.twig', [
-            'plans' => $plan = $planRepository->findByUser($user->getId()),
+            'plans' => $planRepository->findByUser($user->getId()),
         ]);
     }
 
